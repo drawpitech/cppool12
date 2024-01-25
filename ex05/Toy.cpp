@@ -41,12 +41,12 @@ std::string Toy::getAscii() const { return _picture.data; }
 void Toy::speak(std::string statement) {
     std::cout << _name << " \"" << statement << "\"\n";
 }
-bool Toy::speak_es(std::string statement, bool can_speak) {
-    if (!can_speak) {
+bool Toy::speak_es(std::string statement) {
+    if (!_speak_es) {
         _err.type = Error::SPEAK;
         return false;
     }
-    std::cout << _name << " senorita\"" << statement << "\"senorita\n";
+    std::cout << _name << " senorita \"" << statement << "\" senorita\n";
     return true;
 }
 

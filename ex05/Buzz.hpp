@@ -14,5 +14,5 @@ class Buzz : public Toy {
     Buzz(std::string name, std::string ascii = "buzz.txt");
 
     void speak(std::string statement) override;
-    void speak_es(std::string statement);
+    bool speak_es(std::string statement) override;
 };

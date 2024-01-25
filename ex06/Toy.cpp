@@ -47,7 +47,7 @@ bool Toy::speak_es(std::string statement) {
         _err.type = Error::SPEAK;
         return false;
     }
-    std::cout << _name << " senorita\"" << statement << "\"senorita\n";
+    std::cout << _name << " senorita \"" << statement << "\" senorita\n";
     return true;
 }
 

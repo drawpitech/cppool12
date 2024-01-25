@@ -11,7 +11,8 @@
 
 #include "Picture.hpp"
 
-class Toy {
+class Toy
+{
    public:
     using ToyType = enum {
         ALIEN,
@@ -37,11 +38,13 @@ class Toy {
     std::string getAscii() const;
 
     virtual void speak(std::string statement);
-    virtual bool speak_es(std::string statement, bool can_speak = false);
+    virtual bool speak_es(std::string statement);
 
-    class Error : public std::exception {
+    class Error : public std::exception
+    {
        public:
-        enum ErrorType {
+        enum ErrorType
+        {
             UNKNOWN,
             PICTURE,
             SPEAK,
@@ -58,6 +61,9 @@ class Toy {
     Toy::ToyType _type;
     std::string _name;
     Picture _picture;
+
+   protected:
+    bool _speak_es = false;
 };
 
 std::ostream& operator<<(std::ostream& os, const Toy& toy);
