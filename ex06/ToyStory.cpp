@@ -16,22 +16,29 @@ void ToyStory::tellMeAStory(
 {
     std::cout << toy1.getAscii() << "\n" << toy2.getAscii() << "\n";
 
-    std::ifstream filestream(filename);
-    if (!filestream)
+    std::ifstream file(filename);
+    if (!file.is_open()) {
+        std::cout << "Bad Story\n";
         return;
+    }
 
     std::string buf;
 
-    for (std::size_t i = 0; getline(filestream, buf); i++) {
+    for (std::size_t i = 0; getline(file, buf); i++) {
         auto toy = (i % 2 == 0) ? toy1 : toy2;
         auto method = (i % 2 == 0) ? func1 : func2;
 
-        if (buf.find("picture:") == 0) {
-            toy.setAscii(buf.substr(8));
+        if (buf.find("picture:") != 0) {
+            (toy.*method)(buf);
+            continue;
+        }
+        if (toy.setAscii(buf.substr(8))) {
             std::cout << toy.getAscii() << "\n";
             continue;
         }
-        (toy.*method)(buf);
+        std::cout << toy.getLastError().where() << ": "
+                  << toy.getLastError().what() << "\n";
+        return;
     }
-    filestream.close();
+    file.close();
 }
