@@ -11,5 +11,5 @@
 
 class Buzz : public Toy {
    public:
-    Buzz(std::string name, std::string ascii = "woody.txt");
+    Buzz(std::string name, std::string ascii = "buzz.txt");
 };
