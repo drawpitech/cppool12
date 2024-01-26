@@ -24,8 +24,8 @@ void ToyStory::tellMeAStory(
 
     std::string buf;
     for (std::size_t i = 0; getline(file, buf); i++) {
-        auto toy = (i % 2 == 0) ? toy1 : toy2;
-        auto method = (i % 2 == 0) ? func1 : func2;
+        auto &toy = (i % 2 == 0) ? toy1 : toy2;
+        auto &method = (i % 2 == 0) ? func1 : func2;
 
         if (buf.find("picture:") != 0) {
             (toy.*method)(buf);
